@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Javascript</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Listeners</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js"></script>
+</head>
+<body>
 
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src="script.js"></script>
+  <h1>Calculadora</h1>
 
-  </head>
-  <body>
-  </body>
+  <div class="calculator">
+    <div class="input-container">
+      <input type="number" id="numero1" placeholder="X">
+      <select id="operacion">
+        <option value="suma">Suma</option>
+      </select>
+      <input type="number" id="numero2" placeholder="Y">
+    </div>
+
+    <button id="calcular">Calcular</button>
+
+    <label id="resultado"></label>
+  </div>
+</body>
 </html>
