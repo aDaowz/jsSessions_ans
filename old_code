@@ -1,0 +1,147 @@
+// ESTE CODIGO ES SOLO PARA MUESTRA
+
+console.log('El codigo esta funcionando');
+
+// [] Funciones de operaciones para Result
+// let sum = (x, y) => x + y;
+// let rest = (x, y) => x - y;
+// let mult = (x, y) => x * y;
+// let div = (x, y) => x / y;
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // [Enum] Para mejorar estructura, legibilidad y seguridad de codigo
+    const Operation = {
+        ADDITION: '+',
+        SUBSTRACTION: '-',
+        MULTIPLICATION: '*',
+        DIVISION: '÷'
+    }; // [Enum]
+
+    const display = document.getElementById('display');
+    // display.textContent = 'Calculadora';
+  
+    const numericButtons = document.querySelectorAll('.number.button');
+    numericButtons.forEach(number => {
+      number.addEventListener('click', () => {
+
+        // [3] Para limpiar pantalla una vez que se eligio una operacion y luego se quiere un numero
+        if(display.textContent === Operation.ADDITION ||
+                display.textContent === Operation.SUBSTRACTION ||
+                display.textContent === Operation.MULTIPLICATION ||
+                display.textContent === Operation.DIVISION ||
+                isResolved)
+        {
+            display.textContent = '';
+            isResolved = false;
+        } // [3]
+        display.textContent += number.textContent;
+      });
+    });
+
+    // Valores con los que la calculadora requerira para realizar operaciones
+    // let factor1 = 0;
+    // let factor2 = 0;
+    // let result = 0;
+    // let selectedOperation = null;
+
+    // [] Funcion para resetear todo una vez que se efectuo una operacion
+    // let resetAllValues = () => {
+    //     factor1 = 0;
+    //     factor2 = 0;
+    //     result = 0;
+    //     selectedOperation = null;
+    // }
+
+    // Borrado de la pantalla
+    const clearAllButton = document.getElementById('CA');
+    clearAllButton.addEventListener('click', () => {
+
+        display.textContent = '';
+        resetValues();
+    })
+
+    const clearButton = document.getElementById('C');
+    clearButton.addEventListener('click', () => {
+        display.textContent = display.textContent.slice(0, -1);
+    });
+
+    const resultButton = document.getElementById('result');
+    resultButton.addEventListener('click', () => {
+
+        factor2 = Number(display.textContent);
+        switch(selectedOperation){
+            case Operation.ADDITION: // case '+':
+                result = addition(factor1, factor2);
+                break;
+            case Operation.SUBSTRACTION: // case '-':
+                result = substraction(factor1, factor2);
+                break;
+            case Operation.MULTIPLICATION: // case '*':
+                result = multiplication(factor1, factor2);
+                break;
+            case Operation.DIVISION: // case '÷':
+                result = division(factor1, factor2);
+                break;
+        }
+        // result = factor1 + factor2;
+
+        console.log('Result = ', result);
+        display.textContent = result;
+        isResolved = true;
+
+        // [] Resetear
+        // factor1 = 0;
+        // factor2 = 0;
+        // result = 0;
+        // selectedOperation = null;
+        resetValues();
+    });
+
+    operationButtons = document.querySelectorAll('.operation.button');
+    operationButtons.forEach(operation => {
+        operation.addEventListener('click', () => {
+            // [1] Iff para asignar a factor1 valor cuando se calcula algo por primera vez
+            // Sin esto Factor1 y 2 siempre tendrian el mismo valor
+            if(factor1 === 0){
+                factor1 = Number(display.textContent);
+            }
+            else{
+                // factor1 = Number(display.textContent);
+                let factor2 = Number(display.textContent);
+
+                // [2] Validar que si se presiona varias veces operador, no quiera calcular operadores
+                // Ej> 1 + + + +
+                if(isNaN(factor2)){
+                    console.error('This is not a valid operation');
+                    return
+                } // [2]
+
+                switch(selectedOperation){
+                    case Operation.ADDITION: // case '+':
+                        factor1 += factor2;
+                        display.textContent = factor1;
+                        console.log("Resultado factor1: " + factor1);
+                        break;
+                    case Operation.SUBSTRACTION: // case '-':
+                        factor1 -= factor2;
+                        display.textContent = factor1;
+                        console.log("Resultado factor1: " + factor1);
+                        break;
+                    case Operation.MULTIPLICATION: //case '*':
+                        factor1 *= factor2;
+                        display.textContent = factor1;
+                        console.log("Re sultado factor1: " + factor1);
+                        break;
+                    case Operation.DIVISION:// case '÷':
+                        factor1 /= factor2;
+                        display.textContent = factor1;
+                        console.log("Resultado factor1: " + factor1);
+                        break;
+                }
+            }
+            selectedOperation = operation.textContent;
+            display.textContent = selectedOperation;
+        });
+    });
+  });// DOMContentLoaded

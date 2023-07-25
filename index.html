@@ -4,12 +4,54 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Javascript</title>
+    <title>Calculator Porject</title>
 
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src="script.js"></script>
+    <script src="operaciones.js"></script>
+    <script src="calculadora.js"></script>
+    <script src="keyboardInput.js"></script>
 
   </head>
   <body>
+    <div id="calculadora">
+        <div id="displaySection">
+            <div id="display"></div>
+        </div>
+        <div id="body">
+            <div class="actionSection">
+                <button id="CA" class="action button">CA</button>
+                <button id="C" class="action button">C</button>
+                <button id="result" class="action button">=</button>
+            </div>
+            <div class="bodySection">
+                <div class="numberSection">
+                    <div class="numButtonSection">
+                        <button class="number button">7</button>
+                        <button class="number button">8</button>
+                        <button class="number button">9</button>
+                    </div>
+                    <div class="numButtonSection">
+                        <button class="number button">4</button>
+                        <button class="number button">5</button>
+                        <button class="number button">6</button>
+                    </div>
+                    <div class="numButtonSection">
+                        <button class="number button">1</button>
+                        <button class="number button">2</button>
+                        <button class="number button">3</button>
+                    </div>
+                    <div class="numButtonSection">
+                        <button class="number button">0</button>
+                    </div>
+                </div>
+                <div class="operations">
+                    <button class="operation button">+</button>
+                    <button class="operation button">-</button>
+                    <button class="operation button">*</button>
+                    <button class="operation button">÷</button>
+                </div>
+            </div>
+        </div>
+    </div>
   </body>
 </html>
